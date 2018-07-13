@@ -20,6 +20,11 @@ export class FormFin extends Component {
               <Grid.Column>
                 <Header as='h3'>Formulario</Header>
                 <Form onSubmit={this.onSubmit}> 
+                  <Form.Input
+                  name='card_number'
+                  placeholder='card_number'
+                  
+                   />
                 </Form>
               </Grid.Column>
             </Grid.Row>
