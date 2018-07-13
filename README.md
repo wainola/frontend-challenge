@@ -42,12 +42,56 @@ Hubo un tiempo que estuve muy enfocado en aprender Java, JAX-RS, Hibernate y hac
 
 ## ¿Cuáles son sus partes favoritas de las herramientas de desarrollo que usa?
 
+El estilo que tiene Firefox en la consola me resulta del todo agradable. Más allá de eso, la organización de los *dev-tools* de FF es bastante comoda, sobre todo la visualización de los elementos asociados al almacenamiento local del navegador, el depurador de codigo, etc. 
 
-- ¿Tiene algún proyecto personal? ¿De qué tipo?
-- ¿Cuál es su funcionalidad favorita de Internet Explorer?
-- ¿Cómo te gusta tu café?
+En Visual Studio Code me agradan los atajos de teclado del editor, que permiten una experiencia similar -aunque no tan completa- a los usuarios de vim, del poder codear sin tocar el trackpad o el mouse. La terminal integrada del editor es un plus, aunque prefiero *iterm* con *zsh* (hubo un tiempo que use mucho *fish*m pero estoy mas acostumbrado a *zsh*).
 
-- Proponga una arquitectura la cual permita desarrollar y mantener de mejor forma los reducers y los componentes. ¿Por qué decides usar este tipo de arquitectura? ¿Qué ventajas tiene sobre el resto de propuestas que hay en el mercado? ¿Qué desventajas tiene?
+La verdad es que soy un poco discreto en cuanto al uso de mis herramientas de desarrollo. No suelo configurar mucho. Privilegio el llegar y codear, mas que hacer tweaks, aunque siempre algunos son bien necesarios. Es uso de *Prettier* es un **must* para trabajar con el *JSX*, más la habilitación de *emmet* para poder usar los shortcuts en *JSX*
+
+## ¿Tiene algún proyecto personal? ¿De qué tipo?
+
+Estoy diseñando un generador de modelos relacionales usando JSON. Actualmente tengo parte de la API en node, pero me gustaria poder migrar todo a **GO**, ya que este año mi gran meta es consolidar mis conocimientos en el lenguaje. Por mis estudios tampoco he podido darle muy duro a un *toy project* o destinarle el tiempo que me gustaría. Pero en el mediano plazo, esa idea de aplicación es la que me tiene más motivado.
+
+## ¿Cuál es su funcionalidad favorita de Internet Explorer?
+
+Hacer `polyfill` de javascript :)
+
+## ¿Cómo te gusta tu café?
+
+Idealmente sellado en su envase, a la espera de una taza que no se llenará, con agua a temperatura ambiente, a la espera de su hervor, para proceder a irrigar las hebras de una bolsa de té verde.
+
+Por razones que escapan a mi comprensión, el cafe me hace mal. El té verde es mi droga.
+
+## Proponga una arquitectura la cual permita desarrollar y mantener de mejor forma los reducers y los componentes. ¿Por qué decides usar este tipo de arquitectura? ¿Qué ventajas tiene sobre el resto de propuestas que hay en el mercado? ¿Qué desventajas tiene?
+
+Asumiendo que usare Redux como manejador de estado mi propuesta es la siguiente, mi propuesta, es colocar los reducers al interior del directorio de cada componente conectado. 
+
+```
+_ containers
+|_ Login
+  |_ Login.js
+  |_ LoginReducer.js
+```
+
+Luego en el directorio `src` (asumiendo que estamoas usando Create React App) tenemos:
+
+```
+_ index.js
+_ rootReducers.js
+```
+
+### Ventajas
+
+* rootReducer en el root del directorio. Mayor claridad que guardar el index que alberga todos los reducer al interior de un directorio `reducers`. Dado que el `rootReducer` esta en el directorio principal, genera una relacion de importación en descenso.
+* cada componente conectado con su reducer correspondiente. La idea es que el directorio del componente tenga todos loa archivos relevantes: reducer y test.
+* mejora el entendimiento de la organización del proyecto. Se atiende y modificar cada reducer que esta asociado a cada componente conectado. Se mantiene asi una estructura de directorios mas integrada y con menos ramificaciones
+
+### Desventajas
+
+* si el proyecto tiene una estructura de directorios con muchos subniveles y/o componentes hijos, a menos que el diseñador no lo deje estipulado, otro desarrollador podria colocar reducers en cada subcomponente conectado. Se subentiende que deberia haber un reducer por cada contexto de un componente.
+* para aplicaciones mas grandes o con muchos reducers, puede resultar mas comodo o familiar para el desarrollador tener un directorio que liste todos los reducers. La propuesta elimina esa conveniencia en favor de la integracion de las partes que componen holisticamente cada sección del sistema; ej: cada componente tiene su reducer, su test, y sus vistas funcionales de ser necesarias.
+
+
 
 Implemente un formulario el cual esté conectado a un reducer y que además se pueda usar como componente en alguna aplicación, especificaciones del formulario:
 
