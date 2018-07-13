@@ -22,10 +22,27 @@ Tambien he estado revisando de manera muy somera [Svelte](https://svelte.technol
 
 ## ¿Qué es lo que te interesa de la programación?
 
+La programación es interesante porque es una puerta de entrada a un mundo de oportunidades en términos creativos. El computador es quizás una de las maquinas mas importantes del siglo XX, sino la más importante, y la oportunidad que tenemos los programadores de indicarle a esta máquina qué hacer, cómo hacerlo y cómo visualizar lo que queremos que haga, es sin duda una oportunidad única en términos de las posibilidades que se abren. 
 
-- ¿Podría describir algún problema técnico que haya resuelto recientemente?
-- ¿Qué es lo más genial que ha programado y qué es lo que más le enorgullece de ello?
-- ¿Cuáles son sus partes favoritas de las herramientas de desarrollo que usa?
+De manera un poco más teórica, me interesan los conceptos y procedimientos analíticos sobre los cuales los lenguajes de programación operan, y que hacen posibe el producir código con altos grados de legilibidad y abstracción, que luego son traducidos a instrucciones discretas que la máquina entiende.
+
+En síntesis: el mundo creativo que se abre al saber programar y las posibilidades de producción que el oficio entrega, y el asombro y curiosidad que me producen los lenguajes de programación y la manera que tienen de traducir las reflexiones de una persona, en lenguaje máquina y por ende en un producto o entregable.
+
+## ¿Podría describir algún problema técnico que haya resuelto recientemente?
+
+El problema técnico más reciente que tuve que enfrentar fue el testear una aplicación front en React. Fue un desafío, ya que jamás habia testeado en el front, menos utilizando una libreria de UI como React. He realizado anteriormente testeos unitarios en Node, pero las similtudes son escasas. 
+
+El problema fundamental cuando recién me enfrente a esta situación era entender como se llevaba a cabo el testeo del front. Mis conocimientos al respecto eran escasos. Sabía que el testeo en el front era complejo debido a que testear componentes e interacciones con vistas, antes de la llegada de los frameworks de segunda generación como React o Angular, era bastante engorroso, debido a la necesidad de usar navegadores sin cabeza para, programáticamente navegar sobre las apps. 
+
+El enfoque en React usando [Enzyme](https://github.com/airbnb/enzyme) y [Jest](https://jestjs.io/), es que, debido al desacomplado del modulo que hacer el render de los componentes, es posible testearlos sin tener que levantar toda la libreria de React, haciendo posible el trabajo en un entorno un poco más liviano. Debido a esta ventaja, Enzyme y Jest hace posible el render virtual de los componentes, tanto de manera superficial o profunda (rendereando los componentes hijos), permitiendo el testeo de métodos internos, vistas, y comportamientos en general. El desafío de trabajar virtual y programáticamente con los componentes creados, asi como los niveles de abstracción que aparence al momento de construir los test, hicieron que al comienzo el tópico en sí, significara un desafío en términos del aprendizaje de algo que no estaba en mi cajón de herramientas como desarrollador. Fue ciertamente una experiencia de aprendizaje enriquecedora.
+
+## ¿Qué es lo más genial que ha programado y qué es lo que más le enorgullece de ello?
+
+Hubo un tiempo que estuve muy enfocado en aprender Java, JAX-RS, Hibernate y hacer web scrapping con java, para enviar los datos 'scrapeados' a una base de datos, y exponerlos públicamente con la API REST. Lo 'genial' del asunto fue programar el scrapper usando procesos paralelos en Java. Para probarlo diseñe una página con varias subpáginas, de manera de tener en los logs de NodeJS, los tiempos que tardaba el scrapper en hacer la visita al sitio, simulando los tiempos de 'ingesta' del contenido de un humano. Eso fue relativamente complejo. Me enorgullece el haber podido lograr una 'simulación' de la navegación relativamente cercana a la de un humano. es decir, que el scrapper no hiciera ingesta del html de todas las subpáginas en cuestión de segundos, cosa de bloquear circunstancialmente el servidor. Creo que lo más complejo fue utilizar la programación paralela en Java con la libreria de scrapper, y hacer correctamente, con cierto grado de generalización el **DOM traversing**.
+
+## ¿Cuáles son sus partes favoritas de las herramientas de desarrollo que usa?
+
+
 - ¿Tiene algún proyecto personal? ¿De qué tipo?
 - ¿Cuál es su funcionalidad favorita de Internet Explorer?
 - ¿Cómo te gusta tu café?
