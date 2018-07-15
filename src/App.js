@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import {
-  Tab,
   Grid,
   Container,
   Responsive
 } from 'semantic-ui-react'
+import { Route } from 'react-router-dom'
 import FormFin from './Form/Form'
 import FinCards from './FinCards/FinCards'
 import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   render() {
-    const panes = [
-      { menuItem: 'Cards!', render: () => <Tab.Pane><FinCards /></Tab.Pane>},
-      { menuItem: 'Formulario', render: () => <Tab.Pane><FormFin /></Tab.Pane>}
-    ]
+    const { location } = this.props
     return (
       <div className="App">
         <Responsive>
@@ -22,7 +19,8 @@ class App extends Component {
             <Grid >
               <Grid.Row>
                 <Grid.Column>
-                  <Tab style={{ marginTop: '45px'}} panes={panes} />
+                  <Route location={location} exact path='/' component={FinCards} />
+                  <Route location={location} exact path='/patch-cards' component={FormFin} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
