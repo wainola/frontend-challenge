@@ -6,12 +6,15 @@ import {
   Form,
   Header
 } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 export class FormFin extends Component {
   onSubmit = e => {
     e.preventDefault()
   }
   render() {
+    console.log('this.props form', this.props)
     return (
       <div>
         <Responsive>
@@ -36,4 +39,12 @@ export class FormFin extends Component {
     )
   }
 }
-export default FormFin
+
+function mapStateToProps({ card_to_patch }){
+  return { card_to_patch }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({}, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FormFin)

@@ -20,7 +20,7 @@ class App extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <Route location={location} exact path='/' component={FinCards} />
-                  <Route location={location} exact path='/patch-cards' component={FormFin} />
+                  <Route location={location} exact path='/patch-cards/:id' component={FormFin} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
