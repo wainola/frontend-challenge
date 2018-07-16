@@ -1,4 +1,5 @@
 import Api from '../api'
+import axios from 'axios'
 
 export const GET_CARDS = 'GET_CARDS'
 export const FAIL_GETTING_CARDS = 'FAIL_GETTING_CARDS'
@@ -7,6 +8,9 @@ export const FAIL_PATCHING_CARDS = 'FAIL_PATCHING_CARDS'
 export const SEND_TO_PATCH = 'SEND_TO_PATCH'
 export const PATCHING_CARD = 'PATCHING_CARD'
 export const FAIL_PATCHING_CARD = 'FAIL_PATCHING_CARD'
+
+axios.defaults.headers.common['Authorization'] = 'Bearer fasdfadfa9fj987afsdf'
+axios.defaults.headers.common['Content-Type'] = 'application/json'
 
 const ROOT_URL = 'https://fakeprovider.herokuapp.com/'
 
@@ -47,18 +51,26 @@ export const getCards = () => dispatch => {
 
 
 export const patchCard = body => dispatch => {
+  console.log('body', body)
   const bodyToSend = body.data_to_send
   const id = body.id
-  console.log(bodyToSend + ' ' + id)
-  return fetch(`${ROOT_URL}/cards/${id}/info`, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: 'PATCH', mode: 'cors',
-    body: JSON.stringify(bodyToSend)
-  }).then(res => res.json()).then(data => {
-    console.log('dataPatch', data)
-    dispatch(patchingCard(data))
-  }).catch(err => dispatch(failOnPatch(err)))
+  console.log('toPatch', bodyToSend)
+  console.log('idToPatch', id)
+  // return fetch(`${ROOT_URL}cards/${id}/info`, {
+  //   headers: {
+  //     'credentials': 'include',
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json',
+  //     'Authorization': 'Bearer fasdfadfa9fj987afsdf'
+  //   },
+  //   method: 'PATCH', mode: 'no-cors',
+  //   body: JSON.stringify(bodyToSend)
+  // }).then(res => res.json()).then(data => {
+  //   console.log('dataPatch', data)
+  //   dispatch(patchingCard(data))
+  // }).catch(err => dispatch(failOnPatch(err)))
+
+  return axios.patch(`${ROOT_URL}cards/${id}/info`, bodyToSend)
+  .then(res => dispatch(patchingCard(res)))
+  .catch(err => dispatch(failOnPatch(err)))
 }

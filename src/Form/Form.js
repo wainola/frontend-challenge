@@ -1,4 +1,14 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { isEmpty , isUndefined} from 'lodash'
+import moment from 'moment'
+import { patchCard } from '../actions/index'
+import swal from 'sweetalert2'
+import {
+  withSwalInstance
+} from 'sweetalert2-react'
 import {
   Responsive,
   Grid,
@@ -10,12 +20,8 @@ import {
   Button,
   Message
 } from 'semantic-ui-react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { isEmpty , isUndefined} from 'lodash'
-import moment from 'moment'
-import { patchCard } from '../actions/index'
+
+const SweetAlert = withSwalInstance(swal)
 
 export class FormFin extends Component {
   constructor(props){
@@ -26,7 +32,6 @@ export class FormFin extends Component {
     }
   }
   onChange = e => {
-    console.log(e.target.name + ' ' + e.target.value)
     e.preventDefault()
     this.setState({
       ...this.state,
@@ -83,8 +88,13 @@ export class FormFin extends Component {
     }
     return error
   }
+  closeSwal = () => {
+    this.setState({
+      ...this.state,
+      isValidRequest: false
+    })
+  }
   render() {
-    console.log('this.props form', this.props)
     let card = !isEmpty(this.props.card_to_patch) ? this.props.card_to_patch.card : { name_on_card: '', created_at: moment().format('DD/MM/YYYY'), exp_date: moment().format('DD/MM/YYY'), balance: 0}
     if(card.name_on_card === ''){
       this.props.history.goBack()
@@ -166,7 +176,14 @@ export class FormFin extends Component {
                         <Button inverted color='green'>Patch it!</Button>
                       </Form.Field>
                   </Form>
-                </Grid.Column>
+
+                  <SweetAlert 
+                  show={this.state.isValidRequest}
+                  title={'Success on Patched!'}
+                  onConfirm={() => { this.closeSwal()}}
+                  type={'success'}
+                  />
+                    </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>
