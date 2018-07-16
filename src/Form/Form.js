@@ -14,30 +14,80 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { isEmpty , isUndefined} from 'lodash'
 import moment from 'moment'
+import { patchCard } from '../actions/index'
 
 export class FormFin extends Component {
   constructor(props){
     super(props)
     this.state = {
-      card: {}
+      card: {},
+      error: {}
     }
+  }
+  onChange = e => {
+    console.log(e.target.name + ' ' + e.target.value)
+    e.preventDefault()
+    this.setState({
+      ...this.state,
+      card: {
+        ...this.state.card,
+        [e.target.name]: e.target.value
+      }
+    })
   }
   onSubmit = e => {
     e.preventDefault()
+    const error = this.validate(this.state.card)
+    console.log('state', this.state.card)
+    console.log('error', this.state.error)
+    if (isEmpty(error)) {
+      let id = this.props.card_to_patch.card.id
+      let data_to_send = this.state.card
+      const body = {
+        id,
+        data_to_send
+      }
+      console.log('bodyToSend', body)
+      this.props.patchCard(body)
+    } else {
+      let messages = []
+      if(!!error.card_number){
+        message.push(error.card_number)
+      }
+      if(!!error.exp_date){
+        message.push(error.exp_date)
+      }
+      if(!!error.cvv){
+        message.push(error.cvv)
+      }
+      if(!!error.reference_id){
+        message.push(error.reference_id)
+      }
+      this.setState({ ...this.state, error: { messages }})
+    }
   }
-  componentWillMount(){
-    let card 
-    if(isEmpty(this.props.card_to_patch.card) || isUndefined(this.props.card_to_patch.card)){
-      console.log('card')
-      this.props.history.goBack()
+  validate = data => {
+    const error = {}
+    if(!data.card_number){
+      error.card_number = 'Card number cannot be empty'
     }
-    else {
-      // card = this.props.card_to_patch.card
-      this.setState({card: this.props.card_to_patch.card})
+    if(!data.exp_date){
+      error.exp_date = 'Expiration date cannot be empty'
     }
+    if(!data.cvv){
+      error.cvv = 'CVV cannot be empty'
+    }
+    if(!data.reference_id){
+      error.reference_id = 'Reference id cannot be empty'
+    }
+    return error
   }
   render() {
     console.log('this.props form', this.props)
+    let card = !isEmpty(this.props.card_to_patch) ? this.props.card_to_patch.card : { name_on_card: '', created_at: moment().format('DD/MM/YYYY'), exp_date: moment().format('DD/MM/YYY'), balance: 0}
+    if(card.name_on_card === ''){
+      this.props.history.goBack()
+    }
     return (
       <div>
         <Responsive>
@@ -53,7 +103,7 @@ export class FormFin extends Component {
                         <span className='date'>Created at: {card.created_at}</span>
                       </Card.Meta>
                       <Card.Description>
-                        Date of expiration: {moment(card.exp_date).format('DD/MM/YYYY')}
+                        Date of expiration: {card.exp_date}
                         <br/>
                         Balance: {card.balance}
                       </Card.Description>
@@ -66,25 +116,29 @@ export class FormFin extends Component {
                       <Form.Field>
                         <Form.Input
                         name='card_number'
-                        placeholder='card_number'
+                        placeholder='Card Number'
+                        onChange={this.onChange}
                         />
                       </Form.Field>
                       <Form.Field>
                         <Form.Input
                         name='exp_date'
-                        placeholder='expiration date'
+                        placeholder='Expiration date mm/YY'
+                        onChange={this.onChange}
                          />
                       </Form.Field>
                       <Form.Field>
                         <Form.Input
                         name='cvv'
-                        placeholder='cvv'
+                        placeholder='CVV'
+                        onChange={this.onChange}
                         />
                       </Form.Field>
                       <Form.Field>
                         <Form.Input
                         name='reference_id'
-                        placeholder='reference id'
+                        placeholder='Reference id'
+                        onChange={this.onChange}
                         />
                       </Form.Field>
                       <Form.Field>
@@ -106,6 +160,6 @@ function mapStateToProps({ card_to_patch }){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({}, dispatch)
+  return bindActionCreators({ patchCard }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(FormFin)
