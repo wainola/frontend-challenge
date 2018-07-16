@@ -7,7 +7,8 @@ import {
   Header,
   Card,
   Icon,
-  Button
+  Button,
+  Message
 } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -52,16 +53,16 @@ export class FormFin extends Component {
     } else {
       let messages = []
       if(!!error.card_number){
-        message.push(error.card_number)
+        messages.push(error.card_number)
       }
       if(!!error.exp_date){
-        message.push(error.exp_date)
+        messages.push(error.exp_date)
       }
       if(!!error.cvv){
-        message.push(error.cvv)
+        messages.push(error.cvv)
       }
       if(!!error.reference_id){
-        message.push(error.reference_id)
+        messages.push(error.reference_id)
       }
       this.setState({ ...this.state, error: { messages }})
     }
@@ -111,7 +112,27 @@ export class FormFin extends Component {
                   </Card>
                 </Grid.Column>
                 <Grid.Column>
-                  <Header as='h3'>Formulario</Header>
+                  <Header as='h3'>Da Form!</Header>
+                    { isEmpty(this.state.error) ? 
+                      <div></div>
+                      :
+                      <Message negative>
+                        <Message.Header>Ops Error!</Message.Header>
+                        <div>
+                          <p>
+                            Error:
+                          </p>
+                          <ul>
+                            {
+                              this.state.error.messages instanceof Array ? 
+                              this.state.error.messages.filter(message => message !== undefined).map(message => <li>{message}</li>)
+                              :
+                              <div></div>
+                            }
+                          </ul>
+                        </div>
+                      </Message>
+                    }
                     <Form onSubmit={this.onSubmit}> 
                       <Form.Field>
                         <Form.Input
