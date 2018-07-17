@@ -66,10 +66,9 @@ Por razones que escapan a mi comprensión, el cafe me hace mal. El té verde es 
 
 ### Disclaimer
 
-> Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, más que en la noción del uso funciones reducers, que no son más funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
+> Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, más que en la noción del uso funciones reducers, que son funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
 
-
-Asumiendo que usare Redux como manejador de estado mi propuesta es la siguiente, mi propuesta, es colocar los reducers al interior del directorio de cada componente conectado. 
+Asumiendo que usaré Redux como manejador de estado mi propuesta es colocar los reducers al interior del directorio de cada componente conectado. 
 
 ```
 _ containers
@@ -100,13 +99,15 @@ _ rootReducers.js
 
 Esta fue una de las preguntas más díficiles de responder. Inicialmente me incline por la solución que di más arriba por dos razones.
 
-1. Primero porque, asi como me lo hiciste notar respecto a tu observación de la repliación de la estructura de directorios que hice para generar los test del manager, me parecia mucho mas prudente que si los test van a estar en el directorio del componente, los **Reducer** estuvieran también en los directorios donde correspondiera. Otorga cierta ventaja al momento de navegar por el proyecto.
+1. Primero porque, así como me lo hiciste notar respecto a tu observación de la replicación de la estructura de directorios que hice para generar los test del manager, me parecia mucho más prudente que si los test van a estar en el directorio del componente, los **Reducer** estuvieran también en los directorios donde correspondiera. Otorga cierta ventaja al momento de navegar por el proyecto.
+
 2. Porque me parecio interesante que también desde el punto de vista visual, los compoonentes conectados en acciones y no solamente en estado, estuvieran marcados por la presencia del archivo reducer.
 
-Sin embargo con el pasar de los dias reconsideré mi decisión. Si bien no le encuentro nada de malo a ésta aproximación, viendo otros proyectso, el patrón que se reitera es el directorio **reducers**, el directorio **actions**, y con ciertas discrepancias, entre posicionar el **rootReducer** en el root del **src** en el caso de ser una app hecha desde **CRAPP**, o al interior de la carpeta **reducers**. Por lo demas, la documentación de Redux y los mismos ejemplos
+Sin embargo con el pasar de los dias reconsideré mi decisión. Si bien no le encuentro nada de malo a ésta aproximación, viendo otros proyectso, el patrón que se reitera es el directorio **reducers**, el directorio **actions**, y con ciertas discrepancias, entre posicionar el **rootReducer** en el root del **src** en el caso de ser una app hecha desde **CRAPP**, o al interior de la carpeta **reducers**. Por lo demás, la documentación de Redux y los mismos ejemplos siguen este patrón con algunas variaciones.
 
+A mi modo de ver, este patrón es cómodo desde el punto de vista de quién ha aprendido **Redux** desde la documentación de la libreria, el cual, al ser replicado en varios proyectos, conforma una suerte de *costumbre adquirida* para organizarce a este respecto. De todos modos ambas propuestas me parecen factibles; a gusto del consumidor.
 
-Implemente un formulario el cual esté conectado a un reducer y que además se pueda usar como componente en alguna aplicación, especificaciones del formulario:
+## Implemente un formulario el cual esté conectado a un reducer y que además se pueda usar como componente en alguna aplicación, especificaciones del formulario:
 
 - input de texto para ingresar numero de tarjeta (tarjeta de crédito).
 - input de texto para ingresar fecha de expiración (mm/YY).
