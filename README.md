@@ -1,7 +1,7 @@
 # Challenge Finciero Frontend
 
 ## ¿Qué has aprendido en esta semana?
-[Mobx](https://github.com/mobxjs/mobx). Creo que es bueno conocer las distintas alternativas que existen repecto a los manejadores de estado para aplicaciones en javascript. Mobx siempre ha tenido buenas referencias por ser más directo y menos ceremonioso que [Redux](https://redux.js.org/) e incluso con mejor perfomance que éste último [profeta Dan tweet](https://twitter.com/dan_abramov/status/733705049902329856)]). Por otro lado Mobx representa una manera distinta de poder organizar el manejo del estado en las aplicaciones.
+[Mobx](https://github.com/mobxjs/mobx). Creo que es bueno conocer las distintas alternativas que existen repecto a los manejadores de estado para aplicaciones en javascript. Mobx siempre ha tenido buenas referencias por ser más directo y menos ceremonioso que [Redux](https://redux.js.org/) e incluso con mejor perfomance que éste último [profeta Dan tweet](https://twitter.com/dan_abramov/status/733705049902329856). Por otro lado Mobx representa una manera distinta de poder organizar el manejo del estado en las aplicaciones.
 
 ```js
 import { observable, computed } from 'mobx'
