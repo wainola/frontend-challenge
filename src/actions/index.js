@@ -50,7 +50,7 @@ export const getCards = () => dispatch => {
 export const patchCard = body => dispatch => {
   const bodyToSend = body.data_to_send
   const id = body.id
-  // FOR SOME REASON THAT IS REALTE TO MY IGNORANCE FETCH DOESNT WORK BUT AXIOS DOES
+  // FOR SOME REASON THAT IS RELATED TO MY IGNORANCE, FETCH DOESNT WORK BUT AXIOS DOES
   return axios.patch(`${ROOT_URL}cards/${id}/info`, bodyToSend)
   .then(res => dispatch(patchingCard(res)))
   .catch(err => dispatch(failOnPatch(err)))
