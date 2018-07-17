@@ -16,7 +16,7 @@ class Person{
 
 Su principal ventaja es que se usa dentro de las clases o componentes. Esta en cierto modo más integrado que Redux. Las reseñas siempre indican que es incluso más rápido en términos de desarrollo. 
 
-Personalmente me parece atractivo probar y ir verificando alternativas a un tema que es central en la programación front -el manejo del estado-. Tambien le permite a uno mantener el músculo del aprendizaje constante entrenado.
+Personalmente me parece atractivo probar e ir verificando alternativas a un tema que es central en la programación front -el manejo del estado-. Tambien le permite a uno mantener el músculo del aprendizaje constante entrenado.
 
 También he estado revisando de manera muy somera [Svelte](https://svelte.technology/guide). Me interesa la aproximacion del framework al problema de la construcción de interfaces programáticas con javascript. Básicamente entrega pequeños pedazos de mini aplicaciones en tiempo de construcción, evitando la posibles penalizaciones de perfomance en tiempo de ejecución que frameworks como [React](https://reactjs.org/) podría tener.
 
@@ -32,7 +32,7 @@ Si lo pudiera sintetizar escribiría que la programación me es atractiva debido
 
 El problema técnico más reciente que tuve que enfrentar fue el testear una aplicación front en React. Fue un desafío, ya que jamás habia testeado en el front, menos utilizando una libreria de UI como React. He realizado anteriormente testeos unitarios en Node, pero las similtudes son escasas en cuanto a lo que se codea y como uno se aproxima al test. 
 
-El problema fundamental cuando recién me enfrente a esta situación era entender como se llevaba a cabo el testeo del front. Mis conocimientos al respecto eran escasos. Sabía que el testeo en el front era complejo debido a que testear componentes e interacciones con vistas, antes de la llegada de los frameworks de segunda generación como React o Angular, era bastante engorroso, debido a la necesidad de usar navegadores sin cabeza para, programáticamente navegar sobre las apps. 
+La problemática fundamental cuando recién me enfrente a esta situación era entender como se llevaba a cabo el testeo del front. Mis conocimientos al respecto eran escasos. Sabía que el testeo en el front era complejo debido a que testear componentes e interacciones con vistas, antes de la llegada de los frameworks de segunda generación como React o Angular, era bastante engorroso, debido a la necesidad de usar navegadores sin cabeza para, programáticamente navegar sobre las apps. 
 
 El enfoque en React usando [Enzyme](https://github.com/airbnb/enzyme) y [Jest](https://jestjs.io/) es distinto y ciertamente práctico. Debido al desacomplado del módulo que hacer el render de los componentes, es posible testearlos sin tener que levantar toda la libreria de React, haciendo posible el trabajo en un entorno un poco más liviano. Debido a esta ventaja, Enzyme y Jest hace posible el render virtual de los componentes, tanto de manera superficial o profunda (`shallow` o `mount` rendering), rendereando los componentes hijos, permitiendo el testeo de métodos internos, vistas, y comportamientos en general. El desafío de trabajar virtual y programáticamente con los componentes creados, asi como los niveles de abstracción que aparecen al momento de construir los test, hicieron que al comienzo el tópico en sí, significara una empresa interesante de abordar, en términos del aprendizaje de algo que no estaba en mi cajón de herramientas como desarrollador. Fue ciertamente una experiencia enriquecedora.
 
