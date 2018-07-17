@@ -32,10 +32,10 @@ export class FinCards extends Component {
       <div>
         <Responsive>
           <Container>
-            <Grid>
+            < Grid verticalAlign='middle'>
               <Grid.Row columns={1}>
                 <Grid.Column>
-                  <Header as='h4' style={{ margintTop: '45px'}}>The Cards!</Header>
+                  <Header as='h1' style={{ margintTop: '45px'}}>The Cards!</Header>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={1}>

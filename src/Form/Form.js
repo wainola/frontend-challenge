@@ -28,7 +28,18 @@ export class FormFin extends Component {
     super(props)
     this.state = {
       card: {},
-      error: {}
+      error: {},
+      show: false
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    document.forms[0].reset()
+    console.log('nextProps', nextProps)
+    if(!isEmpty(nextProps.card_to_patch.card_patched.data)){
+      this.setState({
+        ...this.state,
+        show: true
+      })
     }
   }
   onChange = e => {
@@ -44,8 +55,6 @@ export class FormFin extends Component {
   onSubmit = e => {
     e.preventDefault()
     const error = this.validate(this.state.card)
-    console.log('state', this.state.card)
-    console.log('error', this.state.error)
     if (isEmpty(error)) {
       let id = this.props.card_to_patch.card.id
       let data_to_send = this.state.card
@@ -53,7 +62,6 @@ export class FormFin extends Component {
         id,
         data_to_send
       }
-      console.log('bodyToSend', body)
       this.props.patchCard(body)
     } else {
       let messages = []
@@ -91,8 +99,9 @@ export class FormFin extends Component {
   closeSwal = () => {
     this.setState({
       ...this.state,
-      isValidRequest: false
+      show: false
     })
+    this.props.history.push('/')
   }
   render() {
     let card = !isEmpty(this.props.card_to_patch) ? this.props.card_to_patch.card : { name_on_card: '', created_at: moment().format('DD/MM/YYYY'), exp_date: moment().format('DD/MM/YYY'), balance: 0}
@@ -178,8 +187,8 @@ export class FormFin extends Component {
                   </Form>
 
                   <SweetAlert 
-                  show={this.state.isValidRequest}
-                  title={'Success on Patched!'}
+                  show={this.state.show}
+                  title={'Success on Patching!!'}
                   onConfirm={() => { this.closeSwal()}}
                   type={'success'}
                   />

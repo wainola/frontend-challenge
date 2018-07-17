@@ -9,7 +9,7 @@ export const SEND_TO_PATCH = 'SEND_TO_PATCH'
 export const PATCHING_CARD = 'PATCHING_CARD'
 export const FAIL_PATCHING_CARD = 'FAIL_PATCHING_CARD'
 
-axios.defaults.headers.common['Authorization'] = 'Bearer fasdfadfa9fj987afsdf'
+axios.defaults.headers.common['authorization'] = 'Bearer fasdfadfa9fj987afsdf'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 
 const ROOT_URL = 'https://fakeprovider.herokuapp.com/'
@@ -58,16 +58,14 @@ export const patchCard = body => dispatch => {
   console.log('idToPatch', id)
   // return fetch(`${ROOT_URL}cards/${id}/info`, {
   //   headers: {
-  //     'credentials': 'include',
-  //     'Accept': 'application/json',
   //     'Content-Type': 'application/json',
   //     'Authorization': 'Bearer fasdfadfa9fj987afsdf'
   //   },
-  //   method: 'PATCH', mode: 'no-cors',
+  //   method: 'patch',
   //   body: JSON.stringify(bodyToSend)
   // }).then(res => res.json()).then(data => {
   //   console.log('dataPatch', data)
-  //   dispatch(patchingCard(data))
+  //   dispatch(patchingCard(data))  
   // }).catch(err => dispatch(failOnPatch(err)))
 
   return axios.patch(`${ROOT_URL}cards/${id}/info`, bodyToSend)
