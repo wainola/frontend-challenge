@@ -1,4 +1,3 @@
-import Api from '../api'
 import axios from 'axios'
 
 export const GET_CARDS = 'GET_CARDS'
@@ -43,31 +42,15 @@ export const getCards = () => dispatch => {
   return fetch(ROOT_URL, {
     method: 'GET', mode: 'cors'
   }).then(res => res.json()).then(data => {
-    console.log('data', data)
-    dispatch(gettingCards(data))}
-  )
+    dispatch(gettingCards(data))})
     .catch(err => dispatch(failGettingCards(err)))
 }
 
 
 export const patchCard = body => dispatch => {
-  console.log('body', body)
   const bodyToSend = body.data_to_send
   const id = body.id
-  console.log('toPatch', bodyToSend)
-  console.log('idToPatch', id)
-  // return fetch(`${ROOT_URL}cards/${id}/info`, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': 'Bearer fasdfadfa9fj987afsdf'
-  //   },
-  //   method: 'patch',
-  //   body: JSON.stringify(bodyToSend)
-  // }).then(res => res.json()).then(data => {
-  //   console.log('dataPatch', data)
-  //   dispatch(patchingCard(data))  
-  // }).catch(err => dispatch(failOnPatch(err)))
-
+  // FOR SOME REASON THAT IS REALTE TO MY IGNORANCE FETCH DOESNT WORK BUT AXIOS DOES
   return axios.patch(`${ROOT_URL}cards/${id}/info`, bodyToSend)
   .then(res => dispatch(patchingCard(res)))
   .catch(err => dispatch(failOnPatch(err)))

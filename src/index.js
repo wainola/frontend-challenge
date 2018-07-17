@@ -9,13 +9,10 @@ import logger from 'redux-logger'
 import rootReducer from './rootReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Api from './api'
 
 const middlewares = [reduxThunk, logger]
 const enhancer = applyMiddleware(...middlewares)
 const store = createStore(rootReducer, composeWithDevTools(enhancer))
-
-Api.setAuthorizationHeader()
 
 ReactDOM.render(
 <BrowserRouter>

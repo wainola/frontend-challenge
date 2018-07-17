@@ -34,7 +34,6 @@ export class FormFin extends Component {
   }
   componentWillReceiveProps(nextProps){
     document.forms[0].reset()
-    console.log('nextProps', nextProps)
     if(!isEmpty(nextProps.card_to_patch.card_patched.data)){
       this.setState({
         ...this.state,
