@@ -20,7 +20,7 @@ Personalmente me parece atractivo probar y ir verificando alternativas a un tema
 
 También he estado revisando de manera muy somera [Svelte](https://svelte.technology/guide). Me interesa la aproximacion del framework al problema de la construcción de interfaces programáticas con javascript. Básicamente entrega pequeños pedazos de mini aplicaciones en tiempo de construcción, evitando la posibles penalizaciones de perfomance en tiempo de ejecución que frameworks como [React](https://reactjs.org/) podría tener.
 
-####¿Qué es lo que te interesa de la programación?
+## ¿Qué es lo que te interesa de la programación?
 
 La programación es interesante porque es una puerta de entrada a un mundo de oportunidades en términos creativos. El computador es quizás una de las maquinas mas importantes del siglo XX, sino la más importante, y la oportunidad que tenemos los programadores de indicarle a esta máquina qué hacer, cómo hacerlo y cómo visualizar lo que queremos que haga, enriquece mucho, desde el punto de vista de la satisfacción personal, la visión que uno puede ir integrando respecto de su trabajo. Por lo demás la programación es otra manera, más sofisticada si se quiere, de resolver puzzles, lo cual la vuelve una actividad -para quiénes estamos apasionados por ella- bastaten lúdica. 
 
