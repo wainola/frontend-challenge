@@ -68,7 +68,8 @@ Por razones que escapan a mi comprensión, el cafe me hace mal. El té verde es 
 Disclaimer
 ----------
 
-Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, más que en la noción del uso funciones reducers, que no son más funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
+Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, 
+más que en la noción del uso funciones reducers, que no son más funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
 ```
 
 Asumiendo que usare Redux como manejador de estado mi propuesta es la siguiente, mi propuesta, es colocar los reducers al interior del directorio de cada componente conectado. 
