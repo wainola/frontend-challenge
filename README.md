@@ -64,13 +64,10 @@ Por razones que escapan a mi comprensión, el cafe me hace mal. El té verde es 
 
 ## Proponga una arquitectura la cual permita desarrollar y mantener de mejor forma los reducers y los componentes. ¿Por qué decides usar este tipo de arquitectura? ¿Qué ventajas tiene sobre el resto de propuestas que hay en el mercado? ¿Qué desventajas tiene?
 
-```
-Disclaimer
-----------
+### Disclaimer
 
-Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, 
-más que en la noción del uso funciones reducers, que no son más funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
-```
+> Las siguientes dos respuestas están basadas en mi experiencia usando reducers con un manejador de estado como Redux, más que en la noción del uso funciones reducers, que no son más funciones deterministicas que dados el mismo input, siempre producirán el mismo resultado. 
+
 
 Asumiendo que usare Redux como manejador de estado mi propuesta es la siguiente, mi propuesta, es colocar los reducers al interior del directorio de cada componente conectado. 
 
