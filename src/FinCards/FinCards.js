@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Table, Grid, Responsive, Container, Header } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   getCards,
   sendToPatch
 } from '../actions/index'
-import { Link } from 'react-router-dom'
 
 export class FinCards extends Component {
   componentWillMount(){
